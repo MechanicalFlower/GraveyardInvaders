@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b05wfry8s5tbp"]
+
+[ext_resource type="PackedScene" uid="uid://b40norqbwvnu7" path="res://assets/models/graveyard/pumpkin-tall.fbx" id="1_dayah"]
+[ext_resource type="Script" path="res://scripts/pumpkin_reload.gd" id="1_kwobk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jr1y5"]
+
+[node name="PumpkinReload" type="StaticBody3D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_kwobk")
+text = "Reload"
+
+[node name="pumpkin-tall" parent="." instance=ExtResource("1_dayah")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.72616, 0)
+
+[node name="PumpkinInterractionCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jr1y5")
