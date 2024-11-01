@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://blmfi55g4xqxv"]
+[gd_scene load_steps=12 format=3 uid="uid://blmfi55g4xqxv"]
 
 [ext_resource type="Script" path="res://scripts/boss/boss.gd" id="1_l0raw"]
 [ext_resource type="PackedScene" uid="uid://b8g8gqxsy05x5" path="res://assets/models/graveyard/character-vampire.fbx" id="2_dws3h"]
-[ext_resource type="PackedScene" uid="uid://df805u6l6lhoh" path="res://scenes/weakpoint.tscn" id="3_bv0bl"]
+[ext_resource type="PackedScene" uid="uid://df805u6l6lhoh" path="res://scenes/boss/weakpoint.tscn" id="3_bv0bl"]
 [ext_resource type="Script" path="res://scripts/boss/blink.gd" id="4_ydgtm"]
 [ext_resource type="Script" path="res://scripts/life.gd" id="5_tcms6"]
 [ext_resource type="Script" path="res://scripts/boss/hit_sound.gd" id="6_cqoj8"]
 [ext_resource type="Script" path="res://addons/destruction/destruction.gd" id="7_tgbcu"]
-[ext_resource type="PackedScene" uid="uid://tuml2fvvv62v" path="res://assets/models/smashed_vampire.glb" id="8_s3m45"]
+[ext_resource type="PackedScene" uid="uid://tuml2fvvv62v" path="res://assets/models/smashed_characters/smashed_vampire.glb" id="8_s3m45"]
+[ext_resource type="PackedScene" uid="uid://cepv6pmce5f2" path="res://scenes/boss/boss_behavior.tscn" id="9_l0ssp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_olkwr"]
 size = Vector3(0.312958, 0.763916, 0.322571)
@@ -43,13 +44,14 @@ script = ExtResource("4_ydgtm")
 
 [node name="LifeComponent" type="Node" parent="VampireBody"]
 script = ExtResource("5_tcms6")
-initial_life = 26
+initial_life = 18
 
 [node name="HitSoundComponent" type="Node" parent="VampireBody"]
 script = ExtResource("6_cqoj8")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="VampireBody"]
 unique_name_in_owner = true
+unit_size = 20.0
 pitch_scale = 0.8
 bus = &"SFX"
 
@@ -57,3 +59,6 @@ bus = &"SFX"
 script = ExtResource("7_tgbcu")
 fragmented = ExtResource("8_s3m45")
 shard_container = NodePath("../..")
+
+[node name="BeehaveTree" parent="VampireBody" node_paths=PackedStringArray("blackboard") instance=ExtResource("9_l0ssp")]
+blackboard = NodePath("@Node@17425")

@@ -1,4 +1,3 @@
-// https://godotshaders.com/shader/sokpop-skybox/
 shader_type sky;
 
 uniform vec3 color_top : source_color = vec3(0.91, 0.14, 1);

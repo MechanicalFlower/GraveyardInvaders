@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdupkh0grwy27"]
+[gd_scene load_steps=11 format=3 uid="uid://bdupkh0grwy27"]
 
 [ext_resource type="PackedScene" uid="uid://lqyku5wn2wo0" path="res://scenes/player/movement_controller.tscn" id="1_t1jcr"]
 [ext_resource type="PackedScene" uid="uid://b8drbos167vf8" path="res://scenes/player/head.tscn" id="2_41iu1"]
 [ext_resource type="Script" path="res://scripts/player/sprint.gd" id="3_bgqcu"]
 [ext_resource type="AudioStream" uid="uid://cn2gylf3jet62" path="res://assets/sounds/sfx/cannon/bang_03.ogg" id="4_44ms2"]
 [ext_resource type="Script" path="res://scripts/player/interact_ray.gd" id="4_g6dmq"]
-[ext_resource type="Script" path="res://scripts/canon.gd" id="5_w0j3b"]
+[ext_resource type="Script" path="res://scripts/weapon/cannon.gd" id="5_w0j3b"]
 [ext_resource type="Script" path="res://scripts/life.gd" id="6_rny40"]
+[ext_resource type="PackedScene" uid="uid://cxi87wr33jlod" path="res://scenes/hud/player_ui.tscn" id="9_apoik"]
 [ext_resource type="Script" path="res://scripts/player/footsteep.gd" id="10_jo4mt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tb2ry"]
@@ -23,30 +24,30 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1,
 target_position = Vector3(0, 0, -2)
 collision_mask = 16
 
-[node name="Canon" type="CSGCylinder3D" parent="Head" index="2"]
+[node name="Cannon" type="CSGCylinder3D" parent="Head" index="2"]
 transform = Transform3D(0.986182, 0.160164, -0.0423441, -0.0172882, -0.154708, -0.987809, -0.164762, 0.974891, -0.149801, 1.51927, -0.64, -1.30804)
 material = SubResource("StandardMaterial3D_tb2ry")
 script = ExtResource("5_w0j3b")
 
-[node name="Marker3D" type="Marker3D" parent="Head/Canon" index="0"]
+[node name="Marker3D" type="Marker3D" parent="Head/Cannon" index="0"]
 transform = Transform3D(0.986182, 1.19209e-07, -0.165667, 0.160164, -0.255597, 0.953424, -0.0423439, -0.966783, -0.252065, 0.0225487, -1.40787, 0.0306617)
 
-[node name="CanonTimer" type="Timer" parent="Head/Canon" index="1"]
+[node name="CanonTimer" type="Timer" parent="Head/Cannon" index="1"]
 wait_time = 0.25
 one_shot = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Head/Canon" index="2"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Head/Cannon" index="2"]
 stream = ExtResource("4_44ms2")
 bus = &"SFX"
 
-[node name="CenterContainer" type="CenterContainer" parent="Head/Canon" index="3"]
+[node name="CenterContainer" type="CenterContainer" parent="Head/Cannon" index="3"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Head/Canon/CenterContainer" index="0"]
+[node name="ColorRect" type="ColorRect" parent="Head/Cannon/CenterContainer" index="0"]
 custom_minimum_size = Vector2(5, 5)
 layout_mode = 2
 
@@ -93,4 +94,10 @@ bus = &"SFX"
 [node name="LifeComponent" type="Node" parent="." index="4"]
 script = ExtResource("6_rny40")
 
+[node name="PlayerUI" parent="." index="5" instance=ExtResource("9_apoik")]
+offset_right = 220.0
+offset_bottom = 92.0
+
+[connection signal="remaining_ammo_changed" from="Head/Cannon" to="PlayerUI" method="_on_canon_remaining_ammo_changed"]
 [connection signal="life_changed" from="LifeComponent" to="." method="_on_life_component_life_changed"]
+[connection signal="life_changed" from="LifeComponent" to="PlayerUI" method="_on_life_component_life_changed"]

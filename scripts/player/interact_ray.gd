@@ -5,7 +5,7 @@ const E = preload("res://addons/controller_icons/assets/key/e.png")
 
 @onready var icon = get_node(^"CenterContainer/VBoxContainer/TextureRect")
 @onready var label: Label = get_node(^"CenterContainer/VBoxContainer/Label")
-@onready var rect = get_node(^"../Canon/CenterContainer")
+@onready var rect = get_node(^"../Cannon/CenterContainer")
 
 
 func _ready():

@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxi87wr33jlod"]
+
+[ext_resource type="Texture2D" uid="uid://cdu5ivhyslcap" path="res://assets/textures/icons/icons8-heart-100.png" id="1_8uss7"]
+[ext_resource type="Script" path="res://scripts/hud/player_ui.gd" id="1_gywei"]
+[ext_resource type="Texture2D" uid="uid://c70t6m1044igs" path="res://assets/textures/icons/icons8-ammo-100.png" id="2_310n1"]
+
+[node name="PlayerUI" type="VBoxContainer"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 106.0
+offset_bottom = 70.0
+script = ExtResource("1_gywei")
+
+[node name="LifeRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LifeIcon" type="TextureRect" parent="LifeRow"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_8uss7")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PlayerHealthLabel" type="Label" parent="LifeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "Health: %s"
+
+[node name="AmmoRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="AmmoIcon" type="TextureRect" parent="AmmoRow"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("2_310n1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AmmoLabel" type="Label" parent="AmmoRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "Ammo: %s"

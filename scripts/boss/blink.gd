@@ -2,7 +2,7 @@ extends Node
 
 @export_node_path var root_path: NodePath = ^"../"
 
-var blink_material: ShaderMaterial = preload("res://resources/blink.tres").duplicate(true)
+var blink_material: ShaderMaterial = preload("res://resources/materials/blink.tres").duplicate(true)
 
 var blink_activated: bool = false
 var blink_timer: float = 0

@@ -1,0 +1,277 @@
+[gd_scene load_steps=33 format=3 uid="uid://dimee6owoxhf2"]
+
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="1_lsxa8"]
+[ext_resource type="Shader" path="res://shaders/terrain.gdshader" id="1_tw6op"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="2_ridqo"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="3_6da8v"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_along_edge_random.gd" id="4_1cj7e"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/offset_scale.gd" id="5_irtah"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_rotation.gd" id="6_cmbkr"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="7_lxf5h"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="8_dxlmu"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="8_qmuw2"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/sphere_shape.gd" id="9_eq2j1"]
+[ext_resource type="PackedScene" uid="uid://cgvh2es4fchc5" path="res://assets/models/graveyard/road.fbx" id="11_wedri"]
+[ext_resource type="PackedScene" uid="uid://csjm8iln2yhqa" path="res://scenes/boss/altar/ghost_altar.tscn" id="13_h4jd6"]
+[ext_resource type="PackedScene" uid="uid://h447p1fwcrmg" path="res://scenes/boss/altar/zombie_altar.tscn" id="14_lawlc"]
+[ext_resource type="PackedScene" uid="uid://euqtxibdb3d3" path="res://scenes/boss/altar/vampir_altar.tscn" id="15_yjdfe"]
+[ext_resource type="AudioStream" uid="uid://be33u64hhygoc" path="res://assets/sounds/sfx/rock_breaking.ogg" id="24_nmj7i"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2yq04"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mraha"]
+render_priority = 0
+shader = ExtResource("1_tw6op")
+shader_parameter/low_color = Color(0.937255, 0.572549, 0.345098, 1)
+shader_parameter/high_color = Color(0.937255, 0.572549, 0.345098, 1)
+shader_parameter/shadow = 0.5
+shader_parameter/shadow_width = 0.0
+shader_parameter/shadow_color = Color(0.705, 0.705, 0.705, 0.705)
+shader_parameter/_specular_smoothness = 0.01
+shader_parameter/_specular_strength = 0.075
+shader_parameter/_glossiness = 0.1
+shader_parameter/_rim_size = 0.5
+shader_parameter/_rim_smoothness = 0.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h1mhl"]
+size = Vector3(75, 6.16846, 75)
+
+[sub_resource type="Resource" id="Resource_v1hde"]
+script = ExtResource("4_1cj7e")
+instance_count = 75
+align_to_path = false
+align_up_axis = Vector3(0, 1, 0)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_bfix8"]
+script = ExtResource("6_cmbkr")
+rotation = Vector3(0, 360, 0)
+snap_angle = Vector3(0, 0, 0)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_rtpxc"]
+script = ExtResource("5_irtah")
+operation = 1
+scale = Vector3(5, 5, 5)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_esg3l"]
+script = ExtResource("8_dxlmu")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 10.0
+ray_offset = 1.0
+remove_points_on_miss = true
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 16
+exclude_mask = 0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_8h0uw"]
+script = ExtResource("2_ridqo")
+stack = Array[ExtResource("3_6da8v")]([SubResource("Resource_v1hde"), SubResource("Resource_bfix8"), SubResource("Resource_rtpxc"), SubResource("Resource_esg3l")])
+
+[sub_resource type="Resource" id="Resource_g8bsm"]
+script = ExtResource("9_eq2j1")
+radius = 33.0
+
+[sub_resource type="Resource" id="Resource_veogs"]
+script = ExtResource("4_1cj7e")
+instance_count = 50
+align_to_path = false
+align_up_axis = Vector3(0, 1, 0)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_masyo"]
+script = ExtResource("5_irtah")
+operation = 1
+scale = Vector3(5, 5, 5)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_3v376"]
+script = ExtResource("6_cmbkr")
+rotation = Vector3(0, 360, 0)
+snap_angle = Vector3(0, 0, 0)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_nm8d2"]
+script = ExtResource("8_dxlmu")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 10.0
+ray_offset = 1.0
+remove_points_on_miss = true
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 16
+exclude_mask = 0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_bls7m"]
+script = ExtResource("2_ridqo")
+stack = Array[ExtResource("3_6da8v")]([SubResource("Resource_veogs"), SubResource("Resource_masyo"), SubResource("Resource_3v376"), SubResource("Resource_nm8d2")])
+
+[sub_resource type="Resource" id="Resource_t1dku"]
+script = ExtResource("9_eq2j1")
+radius = 35.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iwl6u"]
+size = Vector3(75, 50, 20)
+
+[node name="Forest" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Floor" type="StaticBody3D" parent="." groups=["grass"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 16
+collision_mask = 25
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_2yq04")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_mraha")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.58423, 0)
+shape = SubResource("BoxShape3D_h1mhl")
+
+[node name="ProtonScatter" type="Node3D" parent="."]
+script = ExtResource("1_lsxa8")
+modifier_stack = SubResource("Resource_8h0uw")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+
+[node name="ScatterItem" type="Node3D" parent="ProtonScatter"]
+script = ExtResource("7_lxf5h")
+path = "res://assets/models/graveyard/rocks-tall.fbx"
+
+[node name="ScatterItem2" type="Node3D" parent="ProtonScatter"]
+script = ExtResource("7_lxf5h")
+path = "res://assets/models/graveyard/rocks.fbx"
+
+[node name="ScatterItem3" type="Node3D" parent="ProtonScatter"]
+script = ExtResource("7_lxf5h")
+path = "res://assets/models/graveyard/pine-fall.fbx"
+
+[node name="ScatterShape" type="Node3D" parent="ProtonScatter"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+script = ExtResource("8_qmuw2")
+shape = SubResource("Resource_g8bsm")
+
+[node name="ProtonScatter2" type="Node3D" parent="."]
+script = ExtResource("1_lsxa8")
+modifier_stack = SubResource("Resource_bls7m")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+
+[node name="ScatterShape" type="Node3D" parent="ProtonScatter2"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+script = ExtResource("8_qmuw2")
+shape = SubResource("Resource_t1dku")
+
+[node name="ScatterItem" type="Node3D" parent="ProtonScatter2"]
+script = ExtResource("7_lxf5h")
+path = "res://assets/models/graveyard/rocks-tall.fbx"
+
+[node name="ScatterItem2" type="Node3D" parent="ProtonScatter2"]
+script = ExtResource("7_lxf5h")
+path = "res://assets/models/graveyard/rocks.fbx"
+
+[node name="ScatterItem3" type="Node3D" parent="ProtonScatter2"]
+script = ExtResource("7_lxf5h")
+path = "res://assets/models/graveyard/pine-fall.fbx"
+
+[node name="road" parent="." instance=ExtResource("11_wedri")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, 0)
+
+[node name="road5" parent="." instance=ExtResource("11_wedri")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.62268e-07, -0.5, 6)
+
+[node name="road4" parent="." instance=ExtResource("11_wedri")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7, -0.5, 3.0598e-07)
+
+[node name="road3" parent="." instance=ExtResource("11_wedri")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, -6)
+
+[node name="road2" parent="." instance=ExtResource("11_wedri")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, -0.5, -3.49691e-07)
+
+[node name="GhostAltar" parent="." instance=ExtResource("13_h4jd6")]
+
+[node name="ZombieAltar" parent="." instance=ExtResource("14_lawlc")]
+
+[node name="VampirAltar" parent="." instance=ExtResource("15_yjdfe")]
+
+[node name="BoundingBox" type="StaticBody3D" parent="."]
+visible = false
+collision_layer = 64
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoundingBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40)
+shape = SubResource("BoxShape3D_iwl6u")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BoundingBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
+shape = SubResource("BoxShape3D_iwl6u")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="BoundingBox"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 0, 0)
+shape = SubResource("BoxShape3D_iwl6u")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="BoundingBox"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40, 0, 0)
+shape = SubResource("BoxShape3D_iwl6u")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="BoundingBox"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -27.5, 0, -27.5)
+shape = SubResource("BoxShape3D_iwl6u")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="BoundingBox"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 27.5, 0, 27.5)
+shape = SubResource("BoxShape3D_iwl6u")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="BoundingBox"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 27.5, 0, -27.5)
+shape = SubResource("BoxShape3D_iwl6u")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="BoundingBox"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -27.5, 0, 27.5)
+shape = SubResource("BoxShape3D_iwl6u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_nmj7i")
+bus = &"SFX"

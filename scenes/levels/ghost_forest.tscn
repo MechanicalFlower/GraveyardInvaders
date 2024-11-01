@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://03uysbal5ox2"]
+
+[ext_resource type="PackedScene" uid="uid://c37ki65k2i2d3" path="res://scenes/levels/level_template.tscn" id="1_85nsc"]
+[ext_resource type="PackedScene" uid="uid://dimee6owoxhf2" path="res://scenes/map/forest.tscn" id="2_efnc8"]
+
+[node name="GhostForest" type="Node3D"]
+
+[node name="Level" parent="." instance=ExtResource("1_85nsc")]
+
+[node name="Forest" parent="Level" instance=ExtResource("2_efnc8")]

@@ -49,35 +49,31 @@ func set_score(main):
 	var end_time = Time.get_unix_time_from_system()
 	played_time = end_time - start_time
 
-	main.get_node("UI/VBoxContainer2").hide()
-	main.get_node("UI/VBoxContainer").hide()
-	main.get_node("Player/Head/Canon/CenterContainer").hide()
+	main.get_node("Player/PlayerUI").hide()
+	main.get_node("UI/BossUIManager").hide()
+	main.get_node("Player/Head/Cannon/CenterContainer").hide()
 
-	main.get_node("UI/EndPanel/CenterContainer/VBoxContainer/TimeRow/Value").set_text(
+	main.get_node("UI/EndMenu/CenterContainer/VBoxContainer/TimeRow/Value").set_text(
 		"%02d:%02d" % [played_time / 60, fmod(played_time, 60)]
 	)
-	main.get_node("UI/EndPanel/CenterContainer/VBoxContainer/AmmoRow/Value").set_text(
-		str(ammo_used)
-	)
-	main.get_node("UI/EndPanel/CenterContainer/VBoxContainer/WeakpointRow/Value").set_text(
+	main.get_node("UI/EndMenu/CenterContainer/VBoxContainer/AmmoRow/Value").set_text(str(ammo_used))
+	main.get_node("UI/EndMenu/CenterContainer/VBoxContainer/WeakpointRow/Value").set_text(
 		str(weakpoint_hit)
 	)
-	main.get_node("UI/EndPanel/CenterContainer/VBoxContainer/Score/Value").set_text(get_score())
+	main.get_node("UI/EndMenu/CenterContainer/VBoxContainer/Score/Value").set_text(get_score())
 
 	if player_is_dead:
 		# Game Over
-		main.get_node("UI/EndPanel/Advices").show()
-		main.get_node("UI/EndPanel/ColorRect").set_color(Color("#00000071"))
-		main.get_node("UI/EndPanel/CenterContainer/VBoxContainer/Label").set_text(
+		main.get_node("UI/EndMenu/Advices").show()
+		main.get_node("UI/EndMenu/ColorRect").set_color(Color("#00000071"))
+		main.get_node("UI/EndMenu/CenterContainer/VBoxContainer/Label").set_text(
 			"You lose, try again.."
 		)
 	else:
-		# main.get_node("AudioStreamPlayer").play()
-
-		main.get_node("UI/EndPanel/ColorRect").set_color(Color("#ffffff86"))
-		main.get_node("UI/EndPanel/CenterContainer/VBoxContainer/Label").set_text(
+		main.get_node("UI/EndMenu/ColorRect").set_color(Color("#ffffff86"))
+		main.get_node("UI/EndMenu/CenterContainer/VBoxContainer/Label").set_text(
 			"You defeat all bosses !"
 		)
 
-	main.get_node("UI/EndPanel").show()
+	main.get_node("UI/EndMenu").show()
 	get_tree().paused = true

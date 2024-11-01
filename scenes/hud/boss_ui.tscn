@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://lrvvql7135mo"]
+[gd_scene load_steps=4 format=3 uid="uid://lrvvql7135mo"]
 
-[ext_resource type="Texture2D" uid="uid://v3n4gm8u4wod" path="res://assets/ui/bars/health-under.png" id="1_68mfo"]
-[ext_resource type="Texture2D" uid="uid://bcun7ikaou25c" path="res://assets/ui/bars/health-over.png" id="2_s8wgu"]
+[ext_resource type="Script" path="res://scripts/hud/boss_ui.gd" id="1_ll6in"]
+[ext_resource type="Texture2D" uid="uid://d1rveho74dxhs" path="res://assets/textures/bars/bar_back.png" id="2_dl1tj"]
+[ext_resource type="Texture2D" uid="uid://eploucqpag35" path="res://assets/textures/bars/bar_red.png" id="3_iw40a"]
 
 [node name="BossUI" type="Control"]
 custom_minimum_size = Vector2(0, 80)
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("1_ll6in")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -41,5 +43,5 @@ nine_patch_stretch = true
 stretch_margin_left = 238
 stretch_margin_top = 15
 stretch_margin_right = 345
-texture_under = ExtResource("1_68mfo")
-texture_progress = ExtResource("2_s8wgu")
+texture_under = ExtResource("2_dl1tj")
+texture_progress = ExtResource("3_iw40a")

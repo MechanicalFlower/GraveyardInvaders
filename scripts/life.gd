@@ -1,3 +1,4 @@
+class_name LifeComponent
 extends Node
 
 signal life_changed(new_life)
@@ -17,6 +18,7 @@ var cooldown_timer: float = 0
 func _ready():
 	if Global.debug_1hp:
 		life = 1
+	life_changed.emit(life)
 
 
 func apply_damage(damage: int) -> void:
@@ -33,7 +35,7 @@ func _process(delta: float) -> void:
 			for index in body_node.get_slide_collision_count():
 				var collision: KinematicCollision3D = body_node.get_slide_collision(index)
 				var collider: Object = collision.get_collider()
-				if collider is Boss:
+				if collider.collision_layer & 2:
 					# TODO: add cooldown
 					apply_damage(1)
 					cooldown_timer = 2.0
@@ -45,17 +47,14 @@ func dead() -> void:
 	# TODO: play dead animation
 	# TODO: play dead sfx
 	if body_node is not CharacterBody3D:
-		if body_node.enabled:
-			body_node.enabled = false
+		Global.killed_boss += 1
 
-			Global.killed_boss += 1
+		var audio_player = get_node(^"%AudioStreamPlayer")
+		#audio_player.connect("finished", get_owner().queue_free)
+		audio_player.stream = DieSFX
+		audio_player.play()
 
-			var audio_player = get_node(^"%AudioStreamPlayer")
-			#audio_player.connect("finished", get_owner().queue_free)
-			audio_player.stream = DieSFX
-			audio_player.play()
-
-			$"../Destruction".destroy()
+		$"../Destruction".destroy()
 	else:
 		Global.player_is_dead = true
 

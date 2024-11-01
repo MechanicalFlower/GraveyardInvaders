@@ -1,7 +1,7 @@
 class_name Interactable
 extends StaticBody3D
 
-const HighlighMaterial = preload("res://resources/interactable.tres")
+const HighlighMaterial = preload("res://resources/materials/interactable.tres")
 
 @export var text: String = ""
 

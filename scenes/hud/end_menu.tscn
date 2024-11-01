@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://dyamyev7hajye"]
+
+[node name="EndPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.52549)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(294.79, 300)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "You defeat all Bosses !"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="TimeRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Field" type="Label" parent="CenterContainer/VBoxContainer/TimeRow"]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "Time"
+
+[node name="Value" type="Label" parent="CenterContainer/VBoxContainer/TimeRow"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="AmmoRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Field" type="Label" parent="CenterContainer/VBoxContainer/AmmoRow"]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "Ammo used"
+
+[node name="Value" type="Label" parent="CenterContainer/VBoxContainer/AmmoRow"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="WeakpointRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Field" type="Label" parent="CenterContainer/VBoxContainer/WeakpointRow"]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "Weakpoint hit"
+
+[node name="Value" type="Label" parent="CenterContainer/VBoxContainer/WeakpointRow"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Score" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Field" type="Label" parent="CenterContainer/VBoxContainer/Score"]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "Total"
+
+[node name="Value" type="Label" parent="CenterContainer/VBoxContainer/Score"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "H"
+horizontal_alignment = 2
+
+[node name="Advices" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -162.0
+offset_right = 50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Title" type="Label" parent="Advices"]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "Advices:"
+
+[node name="Reload" type="Label" parent="Advices"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "- Find pumpkins on the ground to reload"
+
+[node name="Weakpoint" type="Label" parent="Advices"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 2
+text = "- Hit weakpoints to do more damage"

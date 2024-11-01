@@ -1,7 +1,7 @@
 
 <div align="center">
 
-# 🕯️ MelonCrusade
+# 🕯️ Graveyard Invaders
 
 ![Godot Badge](https://img.shields.io/badge/godot-4.3-blue?logo=Godot-Engine&logoColor=white)
 ![license](https://img.shields.io/badge/license-MIT-green?logo=open-source-initiative&logoColor=white)
@@ -9,14 +9,14 @@
 
 A boss rush game, made with [Godot Engine](https://godotengine.org/).
 
-<a href="https://github.com/mechanicalflower/MelonCrusade/releases/" target="_blank"><img src="public/publishing/store/github.webp" alt="Download on Github" height="40px" ></a>
-<a href="https://mechanical-flower.itch.io/meloncrusade" target="_blank"><img src="public/publishing/store/itchio.webp" alt="Download on itch.io" height="40px" ></a>
+<a href="https://github.com/mechanicalflower/GraveyardInvaders/releases/" target="_blank"><img src="public/publishing/store/github.webp" alt="Download on Github" height="40px" ></a>
+<a href="https://mechanical-flower.itch.io/graveyardinvaders" target="_blank"><img src="public/publishing/store/itchio.webp" alt="Download on itch.io" height="40px" ></a>
 
 </div>
 
 ## About
 
-Dodge traffic on a busy road, then cross a river by jumping on floating logs and climb a rock to reach the melon.
+Dodge, attack, and survive against spooky monsters!
 
 ## Installation
 
@@ -27,9 +27,9 @@ on the Github repository, in the release section.
 
 Download the zip archive, accordingly to your OS, and unzip it.
 
-- **Windows**: Double click on `MelonCrusade.exe`.
-- **MacOS**: Double click on `MelonCrusade.app`.
-- **Linux**: In a terminal, run `./MelonCrusade.x86_64`.
+- **Windows**: Double click on `GraveyardInvaders.exe`.
+- **MacOS**: Double click on `GraveyardInvaders.app`.
+- **Linux**: In a terminal, run `./GraveyardInvaders.x86_64`.
 
 ### From source
 
@@ -39,7 +39,7 @@ Download the zip archive, accordingly to your OS, and unzip it.
 
 Clone the source locally:
 ```
-git clone https://github.com/MechanicalFlower/MelonCrusade.git
+git clone https://github.com/MechanicalFlower/GraveyardInvaders.git
 ```
 
 You need to install addons first:

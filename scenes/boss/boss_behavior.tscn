@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://cepv6pmce5f2"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_0grw0"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_random.gd" id="2_u6nk8"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="3_nyau8"]
+[ext_resource type="Script" path="res://scripts/pattern/actions/noop.gd" id="4_ahefv"]
+[ext_resource type="Script" path="res://scripts/pattern/actions/setup.gd" id="5_mf4ve"]
+[ext_resource type="Script" path="res://scripts/pattern/actions/attack.gd" id="6_ip4v3"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="7_rn7dt"]
+[ext_resource type="Script" path="res://scripts/pattern/charge.gd" id="8_dj83s"]
+
+[sub_resource type="Resource" id="Resource_sx6vq"]
+script = ExtResource("8_dj83s")
+start = Vector3(0, 10, 0)
+end = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_bhxhi"]
+script = ExtResource("8_dj83s")
+start = Vector3(0, 10, 0)
+end = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_1enkp"]
+script = ExtResource("8_dj83s")
+start = Vector3(0, 0, -20)
+end = Vector3(0, 0, 20)
+
+[sub_resource type="Resource" id="Resource_vxx16"]
+script = ExtResource("8_dj83s")
+start = Vector3(0, 0, -20)
+end = Vector3(0, 0, 20)
+
+[node name="BeehaveTree" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("1_0grw0")
+blackboard = NodePath("@Node@17433")
+actor = NodePath("")
+
+[node name="RandomAttack" type="Node" parent="."]
+script = ExtResource("2_u6nk8")
+use_weights = true
+Weights/TopChargeAttack = 1
+Weights/FrontChargeAttack = 5
+
+[node name="TopChargeAttack" type="Node" parent="RandomAttack"]
+script = ExtResource("3_nyau8")
+
+[node name="NoopHit" type="Node" parent="RandomAttack/TopChargeAttack"]
+script = ExtResource("4_ahefv")
+wait_time = 2.0
+
+[node name="Setup" type="Node" parent="RandomAttack/TopChargeAttack"]
+script = ExtResource("5_mf4ve")
+charge_type = SubResource("Resource_sx6vq")
+
+[node name="TimeLimiterDecorator" type="Node" parent="RandomAttack/TopChargeAttack"]
+script = ExtResource("7_rn7dt")
+wait_time = 1.5
+
+[node name="Attack" type="Node" parent="RandomAttack/TopChargeAttack/TimeLimiterDecorator"]
+script = ExtResource("6_ip4v3")
+charge_type = SubResource("Resource_bhxhi")
+
+[node name="FrontChargeAttack" type="Node" parent="RandomAttack"]
+script = ExtResource("3_nyau8")
+
+[node name="NoopHit" type="Node" parent="RandomAttack/FrontChargeAttack"]
+script = ExtResource("4_ahefv")
+wait_time = 2.0
+
+[node name="Setup" type="Node" parent="RandomAttack/FrontChargeAttack"]
+script = ExtResource("5_mf4ve")
+charge_type = SubResource("Resource_1enkp")
+
+[node name="TimeLimiterDecorator" type="Node" parent="RandomAttack/FrontChargeAttack"]
+script = ExtResource("7_rn7dt")
+wait_time = 1.5
+
+[node name="Attack" type="Node" parent="RandomAttack/FrontChargeAttack/TimeLimiterDecorator"]
+script = ExtResource("6_ip4v3")
+charge_type = SubResource("Resource_vxx16")

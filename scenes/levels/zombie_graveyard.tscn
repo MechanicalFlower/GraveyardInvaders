@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvkrv8chixb05"]
+
+[ext_resource type="PackedScene" uid="uid://c37ki65k2i2d3" path="res://scenes/levels/level_template.tscn" id="1_xnf1d"]
+[ext_resource type="PackedScene" uid="uid://b4px55ejdymv3" path="res://scenes/map/graveyard.tscn" id="2_wdw5o"]
+
+[node name="GhostForest" type="Node3D"]
+
+[node name="Level" parent="." instance=ExtResource("1_xnf1d")]
+
+[node name="Gaveyard" parent="Level" instance=ExtResource("2_wdw5o")]

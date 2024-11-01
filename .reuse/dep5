@@ -1,11 +1,15 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Greeter
+Upstream-Name: GraveyardInvaders
 Upstream-Contact: Florian Vazelle <florian.vazelle@vivaldi.net>
 Source: https://github.com/MechanicalFlower/game-template
 
 Files: *
 Copyright: 2024 Florian Vazelle
 License: MIT
+
+Files: **/*.import
+Copyright: none
+License: CC0-1.0
 
 # Addons
 
@@ -39,6 +43,11 @@ Copyright: 2019 HungryProton
 License: MIT
 Source: https://github.com/HungryProton/scatter
 
+Files: addons/beehave/*
+Copyright: 2023 bitbrain
+License: MIT
+Source: https://github.com/bitbrain/beehave
+
 # Models
 
 Files: assets/models/graveyard/*
@@ -46,12 +55,23 @@ Copyright: 2022 Kenney
 License: CC0-1.0
 Source: https://www.kenney.nl/
 
+Files: assets/models/smashed_characters/*
+Copyright: 2022 Kenney
+License: CC0-1.0
+Source: https://www.kenney.nl/
+Note: Edited by me in blender with Cell Fracture
+
 # Textures
 
 Files: assets/textures/icons/*
 Copyright: 2023 Icons8
 License: LicenseRef-linksware
 Source: https://icons8.com/
+
+Files: assets/textures/bars/*
+Copyright: 2014 Kenney
+License: CC0-1.0
+Source: https://www.kenney.nl/
 
 # Files: assets/icon.png
 # Copyright: 2024 Pro_Rookie_Gamer
@@ -93,3 +113,14 @@ Files: shaders/highlight.gdshader
 Copyright: 2022 OzMaister
 License: MIT
 Source: https://godotshaders.com/shader/collectable-item-shining-highlight/
+
+Files: shaders/blink.gdshader
+Copyright: 2024 Gherghetta
+License: CC0-1.0
+Source: https://godotshaders.com/shader/blinking-bomb-countdown/
+Note: Edited by me
+
+Files: shaders/sky.gdshader
+Copyright: 2022 afk
+License: CC0-1.0
+Source: https://godotshaders.com/shader/sokpop-skybox/
