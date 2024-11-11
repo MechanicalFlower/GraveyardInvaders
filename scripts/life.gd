@@ -13,6 +13,7 @@ var cooldown_timer: float = 0
 
 @onready var body_node: CollisionObject3D = get_node(body_path)
 @onready var life = initial_life
+@onready var post_process: PostProcess = get_tree().get_first_node_in_group("post_process")
 
 
 func _ready():
@@ -39,8 +40,14 @@ func _process(delta: float) -> void:
 					# TODO: add cooldown
 					apply_damage(1)
 					cooldown_timer = 2.0
-		else:
-			cooldown_timer -= delta
+					post_process.configuration.VignetteOpacity = 0.5
+					if collider is Bat:
+						collider.queue_free()
+
+		elif cooldown_timer <= 1.0:
+			post_process.configuration.VignetteOpacity = 0.0
+
+		cooldown_timer -= delta
 
 
 func dead() -> void:

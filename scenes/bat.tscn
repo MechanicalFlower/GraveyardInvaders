@@ -1,0 +1,49 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxsce8jm20or4"]
+
+[ext_resource type="Script" path="res://scripts/bat.gd" id="1_5vrf2"]
+[ext_resource type="ArrayMesh" uid="uid://kw3db05yn03o" path="res://assets/models/bats/bat_grey/bat_grey.obj" id="2_uujly"]
+[ext_resource type="Texture2D" uid="uid://gqk8tw3t6pd0" path="res://assets/models/bats/bat_grey/batgrey_texture.png" id="3_y54k8"]
+[ext_resource type="Texture2D" uid="uid://cygypd2rw2qmq" path="res://assets/models/bats/bat_grey/batgreywing_texture.png" id="4_6l6xg"]
+[ext_resource type="Texture2D" uid="uid://cqf2ndfh5vvfw" path="res://assets/models/bats/bat_grey/batgreydetail1_texture.png" id="5_vdgae"]
+[ext_resource type="PackedScene" uid="uid://cxj4cf67il71y" path="res://scenes/smoke.tscn" id="6_of6tc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_myxj7"]
+size = Vector3(2, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nq6r7"]
+albedo_texture = ExtResource("3_y54k8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7g0xn"]
+albedo_texture = ExtResource("4_6l6xg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnk2a"]
+albedo_texture = ExtResource("5_vdgae")
+
+[node name="Bat" type="Node3D"]
+
+[node name="StaticBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 81
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_5vrf2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0160563, -0.999871, 0, 0.999871, 0.0160563, 0, 0.00496399, -0.181272)
+shape = SubResource("BoxShape3D_myxj7")
+
+[node name="BatGrey" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.00802814, -0.499936, 0, 0.499936, 0.00802814, 0, -0.00496393, -0.799515)
+mesh = ExtResource("2_uujly")
+surface_material_override/0 = SubResource("StandardMaterial3D_nq6r7")
+surface_material_override/1 = SubResource("StandardMaterial3D_7g0xn")
+surface_material_override/2 = SubResource("StandardMaterial3D_hnk2a")
+
+[node name="Smoke" parent="." instance=ExtResource("6_of6tc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+emitting = false
+amount = 8
+one_shot = true
+
+[connection signal="body_entered" from="StaticBody3D" to="StaticBody3D" method="_on_body_entered"]

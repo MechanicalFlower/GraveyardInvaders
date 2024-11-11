@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwrsikov442nf"]
+[gd_scene load_steps=3 format=3 uid="uid://cwrsikov442nf"]
 
 [ext_resource type="Script" path="res://scripts/weapon/ammo_spawner.gd" id="1_p3v8q"]
-[ext_resource type="PackedScene" uid="uid://b05wfry8s5tbp" path="res://scenes/weapon/reload.tscn" id="2_58ppr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_glomt"]
 size = Vector3(50, 1, 50)
@@ -16,7 +15,6 @@ autostart = true
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_p3v8q")
-reload_scene = ExtResource("2_58ppr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PumpkinSpawnRange"]
 shape = SubResource("BoxShape3D_glomt")

@@ -1,0 +1,23 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://8f53d7qpamgm"]
+
+[ext_resource type="Shader" path="res://shaders/sky.gdshader" id="1_56l86"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynxdi"]
+shader = ExtResource("1_56l86")
+shader_parameter/color_top = Color(0.34125, 0.0525, 0.375, 1)
+shader_parameter/color_horizon = Color(0.470703, 0.115057, 0.256023, 1)
+shader_parameter/color_bottom = Color(0.345703, 0.25582, 0.134824, 1)
+shader_parameter/exponent_factor_top = 5.0
+shader_parameter/exponent_factor_bottom = 5.0
+shader_parameter/intensity_amp = 1.0
+
+[sub_resource type="Sky" id="Sky_bxymo"]
+sky_material = SubResource("ShaderMaterial_ynxdi")
+
+[resource]
+background_mode = 2
+background_color = Color(0.262745, 0.792157, 0.792157, 1)
+sky = SubResource("Sky_bxymo")
+ambient_light_source = 2
+ambient_light_color = Color(0.882812, 0.882812, 0.882812, 1)
+ambient_light_energy = 0.5

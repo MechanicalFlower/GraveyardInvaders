@@ -12,7 +12,7 @@ var pattern_transform: Transform3D
 @onready var blink_component = $BlinkComponent
 @onready var life_component = $LifeComponent
 @onready var hit_sound_component = $HitSoundComponent
-@onready var player: Node3D = get_tree().get_nodes_in_group(&"player")[0]
+@onready var player: Node3D = get_tree().get_first_node_in_group(&"player")
 
 
 func _ready():

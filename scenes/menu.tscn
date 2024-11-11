@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd771l0s5hu7w"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_1d7fd"]
+[ext_resource type="PackedScene" uid="uid://dq6tvhqcy2aps" path="res://addons/EasyMenus/Scenes/main_menu.tscn" id="2_a25p3"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1d7fd")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_a25p3")]
+layout_mode = 1
+
+[node name="Title" parent="MainMenu/Content" index="0"]
+text = "Graveyard Invaders"
+
+[editable path="MainMenu"]

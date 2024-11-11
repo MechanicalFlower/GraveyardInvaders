@@ -1,35 +1,21 @@
-[gd_scene load_steps=15 format=3 uid="uid://c37ki65k2i2d3"]
+[gd_scene load_steps=16 format=3 uid="uid://c37ki65k2i2d3"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_si80v"]
 [ext_resource type="PackedScene" uid="uid://bdupkh0grwy27" path="res://scenes/player/player.tscn" id="2_k30ll"]
 [ext_resource type="PackedScene" uid="uid://cwrsikov442nf" path="res://scenes/weapon/ammo_spawner.tscn" id="2_owine"]
-[ext_resource type="Shader" path="res://shaders/sky.gdshader" id="4_k0ick"]
+[ext_resource type="Environment" uid="uid://8f53d7qpamgm" path="res://resources/materials/night_sky_env1.tres" id="3_ie03h"]
+[ext_resource type="Script" path="res://addons/command-terminal/src/CommandTerminal.gd" id="7_eloyy"]
+[ext_resource type="PackedScene" uid="uid://b5b8i4p40f5ua" path="res://addons/command-terminal/scn/command_terminal_guts.tscn" id="7_u4tpm"]
 [ext_resource type="Script" path="res://scripts/hud/boss_ui_manager.gd" id="7_xlkfv"]
+[ext_resource type="FontFile" uid="uid://cmmltma2gsu3a" path="res://addons/command-terminal/ast/windows_command_prompt.ttf" id="8_c55pq"]
 [ext_resource type="PackedScene" uid="uid://dyamyev7hajye" path="res://scenes/hud/end_menu.tscn" id="8_up43w"]
 [ext_resource type="AudioStream" uid="uid://7plhbwhkredd" path="res://assets/sounds/boss_theme.ogg" id="11_m0ht2"]
 [ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="12_3582m"]
 [ext_resource type="Script" path="res://addons/post_processing/resource/post_processing_configuration.gd" id="13_cfbl5"]
 [ext_resource type="Script" path="res://scripts/restart.gd" id="14_x45bq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynxdi"]
-shader = ExtResource("4_k0ick")
-shader_parameter/color_top = Color(0.34125, 0.0525, 0.375, 1)
-shader_parameter/color_horizon = Color(0.470703, 0.115057, 0.256023, 1)
-shader_parameter/color_bottom = Color(0.345703, 0.25582, 0.134824, 1)
-shader_parameter/exponent_factor_top = 5.0
-shader_parameter/exponent_factor_bottom = 5.0
-shader_parameter/intensity_amp = 1.0
-
-[sub_resource type="Sky" id="Sky_bxymo"]
-sky_material = SubResource("ShaderMaterial_ynxdi")
-
-[sub_resource type="Environment" id="Environment_yd3rs"]
-background_mode = 2
-background_color = Color(0.262745, 0.792157, 0.792157, 1)
-sky = SubResource("Sky_bxymo")
-ambient_light_source = 2
-ambient_light_color = Color(0.882812, 0.882812, 0.882812, 1)
-ambient_light_energy = 0.5
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3nmgc"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Resource" id="Resource_24c4b"]
 script = ExtResource("13_cfbl5")
@@ -47,10 +33,10 @@ FishEyeRadius = 1.0
 FishEyeAlpha = 1.0
 FishEyeCrop = 1.0
 FishEyeCropColor = Color(0, 0, 0, 1)
-Vignette = false
-VignetteIntensity = 0.4
-VignetteOpacity = 0.5
-VignetteR_G_B = Color(0, 0, 0, 1)
+Vignette = true
+VignetteIntensity = 1.0
+VignetteOpacity = 0.0
+VignetteR_G_B = Color(0.411765, 0, 0, 1)
 Glitch = false
 GlitchRange = 0.05
 GlitchNoiseQuality = 250.0
@@ -110,7 +96,7 @@ script = ExtResource("1_si80v")
 [node name="PumpkinSpawner" parent="." instance=ExtResource("2_owine")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_yd3rs")
+environment = ExtResource("3_ie03h")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.731723, 0.681603, 0, -0.681603, 0.731723, 0, 9.75889, 0)
@@ -143,6 +129,26 @@ script = ExtResource("7_xlkfv")
 visible = false
 layout_mode = 1
 
+[node name="CommandTerminal" type="Control" parent="UI"]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("7_eloyy")
+font = ExtResource("8_c55pq")
+font_size = 50
+
+[node name="__guts__" parent="UI/CommandTerminal" instance=ExtResource("7_u4tpm")]
+layout_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_3nmgc")
+
 [node name="Theme" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("11_m0ht2")
@@ -150,7 +156,8 @@ autoplay = true
 bus = &"Music"
 parameters/looping = true
 
-[node name="PostProcess" type="CanvasLayer" parent="."]
+[node name="PostProcess" type="CanvasLayer" parent="." groups=["post_process"]]
+visible = false
 script = ExtResource("12_3582m")
 configuration = SubResource("Resource_24c4b")
 

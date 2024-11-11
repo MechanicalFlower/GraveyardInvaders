@@ -1,6 +1,6 @@
 extends CSGCylinder3D
 
-signal remaining_ammo_changed(new_quantiy)
+signal remaining_ammo_changed(new_quantity)
 
 const AmmoScene := preload("res://scenes/weapon/ammo.tscn")
 

@@ -37,7 +37,7 @@ shape = SubResource("BoxShape3D_5nwp8")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -1.74256, 0)
 
 [node name="ShadowCopyLeft" parent="GhostBody" instance=ExtResource("1_674k0")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9, -1.74256, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -1.743, 0)
 visible = false
 metadata/_edit_group_ = true
 
@@ -54,7 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00219727, 0.462404, 0.0245
 shape = SubResource("BoxShape3D_5nwp8")
 
 [node name="ShadowCopyRight" parent="GhostBody" instance=ExtResource("1_674k0")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 9, -1.74256, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -1.743, 0)
 visible = false
 metadata/_edit_group_ = true
 
@@ -94,5 +94,6 @@ script = ExtResource("7_vugdb")
 fragmented = ExtResource("8_vqx66")
 shard_container = NodePath("../..")
 
-[node name="BeehaveTree" parent="GhostBody" node_paths=PackedStringArray("blackboard") instance=ExtResource("9_c7d1h")]
-blackboard = NodePath("@Node@17428")
+[node name="BeehaveTree" parent="GhostBody" node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("9_c7d1h")]
+blackboard = NodePath("@Node@17431")
+actor = NodePath("..")

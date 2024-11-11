@@ -7,6 +7,8 @@ func _on_body_entered(body):
 		body.hit_by_ammo(5)
 	elif body is Boss:
 		body.hit(1)
+	elif body is Bat:
+		body.hit()
 	# TODO: play explode animation
 	# TODO: play explode sfx
 	queue_free()

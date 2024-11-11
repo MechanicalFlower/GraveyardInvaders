@@ -7,6 +7,9 @@ extends ActionLeaf
 
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
+	if actor is Ghost:
+		actor.disable_shadow_copies()
+
 	var remaining_time = blackboard.get_value(cache_key, 0.0, str(actor.get_instance_id()))
 
 	if remaining_time > 0.0:
@@ -30,7 +33,4 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		return RUNNING
 
 	actor.linear_velocity = Vector3.ZERO
-	if actor is Ghost:
-		actor.disable_shadow_copies()
-
 	return SUCCESS

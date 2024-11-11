@@ -48,6 +48,16 @@ Copyright: 2023 bitbrain
 License: MIT
 Source: https://github.com/bitbrain/beehave
 
+Files: addons/EasyMenus/*
+Copyright: 2022 Savo Vuksan
+License: MIT
+Source: https://github.com/SavoVuksan/EasyMenus
+
+Files: addons/command-terminal/*
+Copyright: 2024 20milliliter
+License: MIT
+Source: https://github.com/20milliliter/command-terminal
+
 # Models
 
 Files: assets/models/graveyard/*
@@ -61,6 +71,11 @@ License: CC0-1.0
 Source: https://www.kenney.nl/
 Note: Edited by me in blender with Cell Fracture
 
+Files: assets/models/bats/*
+Copyright: 2021 obliviist
+License: CC0-1.0
+Source: https://obliviist.itch.io/ps1psx-style-wild-bats
+
 # Textures
 
 Files: assets/textures/icons/*
@@ -69,6 +84,11 @@ License: LicenseRef-linksware
 Source: https://icons8.com/
 
 Files: assets/textures/bars/*
+Copyright: 2014 Kenney
+License: CC0-1.0
+Source: https://www.kenney.nl/
+
+Files: assets/textures/smoke_06.png
 Copyright: 2014 Kenney
 License: CC0-1.0
 Source: https://www.kenney.nl/

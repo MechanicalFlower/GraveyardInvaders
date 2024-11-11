@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg3m5qnyxjev4"]
+
+[ext_resource type="Environment" uid="uid://bjh60ch6l0ewq" path="res://resources/materials/night_sky_env2.tres" id="1_ltm8b"]
+
+[node name="Sky" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_ltm8b")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.984196, 0.113116, -0.136249, 0, 0.7694, 0.638767, 0.177085, -0.628672, 0.75724, 0, 0, 0)
+shadow_enabled = true

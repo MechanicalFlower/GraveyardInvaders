@@ -30,3 +30,16 @@ func _plugging():
 			"exclude": ["addons/gdUnit4"]
 		}
 	)
+	plug(
+		"florianvazelle/EasyMenus",
+		{"commit": "018ab39001f862abbd6ca424258a9a548589d61c", "renovate-branch": "master"}
+	)
+	plug(
+		"20milliliter/command-terminal",
+		{
+			"commit": "4c15f8a9a3e4b9e8f8ae21bf408cc551435ab632",
+			"renovate-branch": "main",
+			"install_root": "addons/command-terminal",
+			"include": ["."]
+		}
+	)

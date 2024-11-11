@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://bfvkhsl4xnfg2"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_jt1ds"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_random.gd" id="2_yg8rc"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="3_s1oia"]
+[ext_resource type="Script" path="res://scripts/pattern/actions/noop.gd" id="4_7en5k"]
+[ext_resource type="Script" path="res://scripts/pattern/actions/setup.gd" id="5_p31t1"]
+[ext_resource type="Script" path="res://scripts/pattern/charge.gd" id="6_e7crf"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="7_ablbo"]
+[ext_resource type="Script" path="res://scripts/pattern/actions/attack.gd" id="8_sw4ae"]
+[ext_resource type="Script" path="res://scripts/pattern/decorators/sleep.gd" id="9_cbfkt"]
+[ext_resource type="Script" path="res://scripts/pattern/actions/spawn_bat_swarm.gd" id="9_p0jxb"]
+
+[sub_resource type="Resource" id="Resource_sx6vq"]
+script = ExtResource("6_e7crf")
+start = Vector3(0, 10, 0)
+end = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_bhxhi"]
+script = ExtResource("6_e7crf")
+start = Vector3(0, 10, 0)
+end = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_1enkp"]
+script = ExtResource("6_e7crf")
+start = Vector3(0, 0, -20)
+end = Vector3(0, 0, 20)
+
+[sub_resource type="Resource" id="Resource_vxx16"]
+script = ExtResource("6_e7crf")
+start = Vector3(0, 0, -20)
+end = Vector3(0, 0, 20)
+
+[sub_resource type="Resource" id="Resource_4k72m"]
+script = ExtResource("6_e7crf")
+start = Vector3(0, 5, 10)
+end = Vector3(0, 0, 0)
+
+[node name="VampireBeehaveTree" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("1_jt1ds")
+blackboard = NodePath("@Node@22885")
+actor = NodePath("..")
+
+[node name="RandomAttack" type="Node" parent="."]
+script = ExtResource("2_yg8rc")
+
+[node name="TopChargeAttack" type="Node" parent="RandomAttack"]
+script = ExtResource("3_s1oia")
+
+[node name="NoopHit" type="Node" parent="RandomAttack/TopChargeAttack"]
+script = ExtResource("4_7en5k")
+wait_time = 2.0
+
+[node name="Setup" type="Node" parent="RandomAttack/TopChargeAttack"]
+script = ExtResource("5_p31t1")
+charge_type = SubResource("Resource_sx6vq")
+
+[node name="TimeLimiterDecorator" type="Node" parent="RandomAttack/TopChargeAttack"]
+script = ExtResource("7_ablbo")
+wait_time = 1.5
+
+[node name="Attack" type="Node" parent="RandomAttack/TopChargeAttack/TimeLimiterDecorator"]
+script = ExtResource("8_sw4ae")
+charge_type = SubResource("Resource_bhxhi")
+
+[node name="FrontChargeAttack" type="Node" parent="RandomAttack"]
+script = ExtResource("3_s1oia")
+
+[node name="NoopHit" type="Node" parent="RandomAttack/FrontChargeAttack"]
+script = ExtResource("4_7en5k")
+wait_time = 2.0
+
+[node name="Setup" type="Node" parent="RandomAttack/FrontChargeAttack"]
+script = ExtResource("5_p31t1")
+charge_type = SubResource("Resource_1enkp")
+
+[node name="TimeLimiterDecorator" type="Node" parent="RandomAttack/FrontChargeAttack"]
+script = ExtResource("7_ablbo")
+wait_time = 1.5
+
+[node name="Attack" type="Node" parent="RandomAttack/FrontChargeAttack/TimeLimiterDecorator"]
+script = ExtResource("8_sw4ae")
+charge_type = SubResource("Resource_vxx16")
+
+[node name="SwarmAttack" type="Node" parent="RandomAttack"]
+script = ExtResource("3_s1oia")
+
+[node name="NoopHit" type="Node" parent="RandomAttack/SwarmAttack"]
+script = ExtResource("4_7en5k")
+wait_time = 2.0
+
+[node name="Setup" type="Node" parent="RandomAttack/SwarmAttack"]
+script = ExtResource("5_p31t1")
+charge_type = SubResource("Resource_4k72m")
+
+[node name="TimeLimiterDecorator" type="Node" parent="RandomAttack/SwarmAttack"]
+script = ExtResource("7_ablbo")
+wait_time = 5.0
+
+[node name="CooldownDecorator" type="Node" parent="RandomAttack/SwarmAttack/TimeLimiterDecorator"]
+script = ExtResource("9_cbfkt")
+wait_time = 1.0
+
+[node name="SpawnBatSwarm" type="Node" parent="RandomAttack/SwarmAttack/TimeLimiterDecorator/CooldownDecorator"]
+script = ExtResource("9_p0jxb")
