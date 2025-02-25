@@ -37,7 +37,7 @@ func _plugging():
 	plug(
 		"20milliliter/command-terminal",
 		{
-			"commit": "4c15f8a9a3e4b9e8f8ae21bf408cc551435ab632",
+			"commit": "8bf76436fa82872b08675d0c1367dcf4524fd417",
 			"renovate-branch": "main",
 			"install_root": "addons/command-terminal",
 			"include": ["."]
