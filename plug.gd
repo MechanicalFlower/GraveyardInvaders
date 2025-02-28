@@ -20,7 +20,7 @@ func _plugging():
 	)
 	plug(
 		"HungryProton/scatter",
-		{"commit": "59147fc5b16f505ea54bf2c9ad65ae6b613a2c58", "renovate-branch": "v4"}
+		{"commit": "7153347961ef265b804b61869e36e63d155bf9c4", "renovate-branch": "v4"}
 	)
 	plug(
 		"bitbrain/beehave",
