@@ -8,7 +8,7 @@ func _plugging():
 	)
 	plug(
 		"rsubtil/controller_icons",
-		{"commit": "9088a0f804ce2858f19aac044988c71fcaa015e2", "renovate-branch": "master"}
+		{"commit": "1dea4403daf61490c03c138b85c39a71764a48e4", "renovate-branch": "master"}
 	)
 	plug(
 		"ItsKorin/Godot-Post-Process-Plugin",
