@@ -25,7 +25,7 @@ func _plugging():
 	plug(
 		"bitbrain/beehave",
 		{
-			"commit": "a8cb9fb4d17325137ab081c5e128d4cd919143d7",
+			"commit": "d1cbc46f9832029afb855a97a5f996de849ca91b",
 			"renovate-branch": "godot-4.x",
 			"exclude": ["addons/gdUnit4"]
 		}
