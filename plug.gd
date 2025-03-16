@@ -12,7 +12,7 @@ func _plugging():
 	)
 	plug(
 		"ItsKorin/Godot-Post-Process-Plugin",
-		{"commit": "4e3f96f674d575478b0c24415fc9de0d7e617304", "renovate-branch": "main"}
+		{"commit": "32c837451c0538b7b60cd3a890639b8a091fe9af", "renovate-branch": "main"}
 	)
 	plug(
 		"Jummit/godot-destruction-plugin",
